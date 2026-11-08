@@ -1,0 +1,12 @@
+[package]
+name = "fita-match"
+description = "Matching and clustering for Fita"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+fita-config.workspace = true
+fita-core.workspace = true

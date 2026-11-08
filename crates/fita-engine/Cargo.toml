@@ -1,0 +1,22 @@
+[package]
+name = "fita-engine"
+description = "Runs Fita projects end to end"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+fita-config.workspace = true
+fita-connect.workspace = true
+fita-core.workspace = true
+fita-match.workspace = true
+fita-normalize.workspace = true
+fita-store.workspace = true
+fita-survive.workspace = true
+serde.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

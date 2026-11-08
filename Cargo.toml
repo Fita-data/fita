@@ -1,0 +1,29 @@
+[workspace]
+resolver = "2"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/Fita-data/fita"
+publish = false
+
+[workspace.dependencies]
+fita-core = { path = "crates/fita-core" }
+fita-config = { path = "crates/fita-config" }
+fita-connect = { path = "crates/fita-connect" }
+fita-normalize = { path = "crates/fita-normalize" }
+fita-match = { path = "crates/fita-match" }
+fita-survive = { path = "crates/fita-survive" }
+fita-store = { path = "crates/fita-store" }
+fita-engine = { path = "crates/fita-engine" }
+
+chrono = { version = "0.4", default-features = false, features = ["std", "serde"] }
+csv = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+tempfile = "3"
+thiserror = "2"
+unicode-normalization = "0.1"
