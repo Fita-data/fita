@@ -1,0 +1,26 @@
+crm_id,company,vat,contact_email,phone,city,last_modified
+CRM-001,"Limpiezas Quirelo, S. Coop.",,Administracion@quirelo15.example,+34 650 000 015,Bilbao,2026-06-16T13:30:00Z
+CRM-002,IMPRENTA NUBARRON SL,B-00006924,administracion@nubarron16.example,660000016,Málaga,2026-07-17T14:30:00Z
+CRM-003,Viveros Pradoluz S.A.,es A.00.007.294,ADMINISTRACION@PRADOLUZ17.EXAMPLE,670-00-00-17,Murcia,2026-08-18T15:30:00Z
+CRM-004,Aluminios Montañeta SLU,b00007666,administracion@montaneta18.example,0034680000018,Valladolid,2026-09-19T16:30:00Z
+CRM-005,"Maderas Albarizo, S. Coop.",B00008037,Administracion@albarizo19.example,+34 690 000 019,A Coruña,2026-10-20T17:30:00Z
+CRM-006,FERRETERIA ONDAMAR SL,,administracion@ondamar20.example,600000020,Madrid,2026-01-21T08:30:00Z
+CRM-007,Panaderia Castrolino S.A.,A-00008771,ADMINISTRACION@CASTROLINO21.EXAMPLE,610-00-00-21,Barcelona,2026-02-22T09:30:00Z
+CRM-008,Transportes Cierzomar SLU,es B.00.009.142,administracion@cierzomar22.example,0034620000022,Valencia,2026-03-23T10:30:00Z
+CRM-009,"Construcciones Valtoria, S. Coop.",b00009514,Administracion@valtoria23.example,+34 630 000 023,Sevilla,2026-04-24T11:30:00Z
+CRM-010,DISTRIBUCIONES FUENTEZUELA DEMO SL,B00009886,administracion@fuentezuelademo24.example,640000024,Zaragoza,2026-05-25T12:30:00Z
+CRM-011,Talleres Olmedilla Inventada S.A.,,ADMINISTRACION@OLMEDILLAINVENTADA25.EXAMPLE,650-00-00-25,Bilbao,2026-06-01T13:30:00Z
+CRM-012,Gráficas Quirelo SLU,B-00010629,administracion@quirelo26.example,0034660000026,Málaga,2026-07-02T14:30:00Z
+CRM-013,"Bodegas Nubarrón, S. Coop.",es B.00.010.991,Administracion@nubarron27.example,+34 670 000 027,Murcia,2026-08-03T15:30:00Z
+CRM-014,CLIMATIZACION PRADOLUZ SL,b00011361,administracion@pradoluz28.example,680000028,Valladolid,2026-09-04T16:30:00Z
+CRM-015,Consultoria Montaneta S.A.,A00011734,ADMINISTRACION@MONTANETA29.EXAMPLE,690-00-00-29,A Coruña,2026-10-05T17:30:00Z
+CRM-016,Muebles Albarizo SLU,ESB00012104,administracion@albarizo30.example,0034600000030,Madrid,2026-01-06T08:30:00Z
+CRM-017,"Electricidad Lunaverde, S. Coop.",B-00012476,administracion@lunaverde31.example,+34 610 000 031,Barcelona,2026-02-07T09:30:00Z
+CRM-018,FONTANERIA PENALISA SL,es B.00.012.849,administracion@penalisa32.example,620000032,Valencia,2026-03-08T10:30:00Z
+CRM-019,Ceramicas Fuentezuela Demo Norte S.A.,a00013219,administracion@fuentezuelademonorte33.example,630-00-00-33,Sevilla,2026-04-09T11:30:00Z
+CRM-020,Conservas Solcierzo SLU,B00013581,administracion@solcierzo34.example,0034640000034,Zaragoza,2026-05-10T12:30:00Z
+CRM-021,"Limpiezas Robledal Ficticio, S. Coop.",ESB00013953,administracion@robledalficticio35.example,+34 650 000 035,Bilbao,2026-06-11T13:30:00Z
+CRM-022,IMPRENTA MIRABRISA SL,B-00014324,administracion@mirabrisa36.example,660000036,Malaga,2026-07-12T14:30:00Z
+CRM-023,Viveros Brezalia S.A.,es A.00.014.696,administracion@brezalia37.example,670-00-00-37,Murcia,2026-08-13T15:30:00Z
+CRM-024,Aluminios Arenúbel SLU,b00015065,administracion@arenubel38.example,0034680000038,Valladolid,2026-09-14T16:30:00Z
+CRM-025,"Maderas Encinoso, S. Coop.",B00015438,administracion@encinoso39.example,+34 690 000 039,A Coruna,2026-10-15T17:30:00Z

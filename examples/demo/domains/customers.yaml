@@ -1,0 +1,9 @@
+name: customers
+prefix: cus
+attributes:
+  - { name: tax_id, type: tax_id }
+  - { name: legal_name, type: company_name }
+  - { name: email, type: email, personal: true }
+  - { name: phone, type: phone, personal: true }
+  - { name: postcode, type: code }
+  - { name: city, type: text }

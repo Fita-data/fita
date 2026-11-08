@@ -1,0 +1,15 @@
+name: billing
+domain: customers
+connector:
+  type: csv
+  path: data/billing.csv
+  separator: ";"
+key: id
+modified_at: actualizado
+mapping:
+  tax_id: nif
+  legal_name: razon_social
+  email: email
+  phone: telefono
+  postcode: cp
+  city: poblacion

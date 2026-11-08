@@ -1,0 +1,13 @@
+name: crm
+domain: customers
+connector:
+  type: csv
+  path: data/crm.csv
+key: crm_id
+modified_at: last_modified
+mapping:
+  tax_id: vat
+  legal_name: company
+  email: contact_email
+  phone: phone
+  city: city

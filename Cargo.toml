@@ -18,12 +18,15 @@ fita-match = { path = "crates/fita-match" }
 fita-survive = { path = "crates/fita-survive" }
 fita-store = { path = "crates/fita-store" }
 fita-engine = { path = "crates/fita-engine" }
+fita-cli = { path = "crates/fita-cli" }
 
+anyhow = "1"
 chrono = { version = "0.4", default-features = false, features = ["std", "serde"] }
+clap = { version = "4", features = ["derive"] }
 csv = "1"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-serde_yaml = "0.9"
+serde-saphyr = { version = "2.1", default-features = false, features = ["deserialize"] }
 tempfile = "3"
 thiserror = "2"
 unicode-normalization = "0.1"

@@ -39,6 +39,12 @@ impl FileStore {
         &self.root
     }
 
+    /// Returns true if golden records of `domain` have been written, even if
+    /// there were none. Use it to tell "never run" apart from "ran empty".
+    pub fn has_master_records(&self, domain: &str) -> bool {
+        self.file(domain, MASTER_RECORDS_FILE).is_file()
+    }
+
     fn file(&self, domain: &str, name: &str) -> PathBuf {
         self.root.join(domain).join(name)
     }
@@ -143,6 +149,7 @@ mod tests {
         let store = FileStore::new(dir.path());
         assert!(store.source_records("customers").unwrap().is_empty());
         assert!(store.master_records("customers").unwrap().is_empty());
+        assert!(!store.has_master_records("customers"));
         assert!(!store.root().exists());
     }
 
@@ -167,6 +174,8 @@ mod tests {
         assert!(!base.join("master_records.json.tmp").exists());
 
         let reopened = FileStore::new(dir.path());
+        assert!(reopened.has_master_records("customers"));
+        assert!(!reopened.has_master_records("suppliers"));
         assert_eq!(
             reopened.source_records("customers").unwrap(),
             vec![source_record("1")]

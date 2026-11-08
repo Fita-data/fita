@@ -1,0 +1,15 @@
+domain: customers
+version: 1
+rules:
+  - name: same_tax_id
+    when: [equal(tax_id)]
+    confidence: 1.0
+  - name: same_email
+    when: [equal(email)]
+    confidence: 0.9
+survivorship:
+  tax_id: [source(billing, crm)]
+  legal_name: [source(billing)]
+  email: [source(crm, billing)]
+  phone: [most_recent]
+  city: [source(crm, billing)]

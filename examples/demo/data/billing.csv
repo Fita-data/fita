@@ -1,0 +1,31 @@
+id;razon_social;nif;email;telefono;cp;poblacion;actualizado
+1000;Ferretería Lunaverde, S.L.;B00001008;administracion@lunaverde0.example;+34 600 000 000;28001;Madrid;2026-01-01
+1001;Panadería Peñalisa SA;ESA00001370;administracion@penalisa1.example;610000001;08001;Barcelona;2026-02-02
+1002;Transportes Tejarín, S.L.U.;B-00001743;administracion@tejarin2.example;620-00-00-02;46001;Valencia;2026-03-03
+1003;Construcciones Solcierzo SCoop;B00002113;administracion@solcierzo3.example;0034630000003;41001;Sevilla;
+1004;Distribuciones Robledal Ficticio, S.L.;b00002485;administracion@robledalficticio4.example;+34 640 000 004;50001;Zaragoza;2026-05-05
+1005;Talleres Mirabrisa SA;A00002857;;650000005;48001;Bilbao;2026-06-06
+1006;Gráficas Brezalia, S.L.U.;B00003228;administracion@brezalia6.example;660-00-00-06;29001;Málaga;2026-07-07
+1007;Bodegas Arenúbel SCoop;B-00003590;administracion@arenubel7.example;0034670000007;30001;Murcia;
+1008;Climatización Encinoso, S.L.;es B.00.003.962;administracion@encinoso8.example;+34 680 000 008;47001;Valladolid;2026-09-09
+1009;Consultoría Ondamar SA;A00004333;administracion@ondamar9.example;690000009;15001;A Coruña;2026-01-10
+1010;Muebles Castrolino, S.L.U.;B00004705;administracion@castrolino10.example;600-00-00-10;28001;Madrid;2026-02-11
+1011;Electricidad Cierzomar SCoop;ESB00005074;;0034610000011;08001;Barcelona;
+1012;Fontanería Valtoria, S.L.;B00005447;administracion@valtoria12.example;+34 620 000 012;46001;Valencia;2026-04-13
+1013;Cerámicas Fuentezuela Demo SA;es A.00.005.819;administracion@fuentezuelademo13.example;630000013;41001;Sevilla;2026-05-14
+1014;Conservas Olmedilla Inventada, S.L.U.;b00006189;administracion@olmedillainventada14.example;640-00-00-14;50001;Zaragoza;2026-06-15
+1015;Limpiezas Quirelo SCoop;B00006551;administracion@quirelo15.example;0034650000015;48001;Bilbao;
+1016;Imprenta Nubarrón, S.L.;ESB00006924;administracion@nubarron16.example;+34 660 000 016;29001;Málaga;2026-08-17
+1017;Viveros Pradoluz SA;A-00007294;;670000017;30001;Murcia;2026-09-18
+1018;Aluminios Montañeta, S.L.U.;B00007666;administracion@montaneta18.example;680-00-00-18;47001;Valladolid;2026-01-19
+1019;Maderas Albarizo SCoop;b00008037;administracion@albarizo19.example;0034690000019;15001;A Coruña;
+1020;Ferretería Ondamar, S.L.;B00008409;administracion@ondamar20.example;+34 600 000 020;28001;Madrid;2026-03-21
+1021;Panadería Castrolino SA;A00008771;administracion@castrolino21.example;610000021;08001;Barcelona;2026-04-22
+1022;Transportes Cierzomar, S.L.U.;B-00009142;administracion@cierzomar22.example;620-00-00-22;46001;Valencia;2026-05-23
+1023;Construcciones Valtoria SCoop;es B.00.009.514;;0034630000023;41001;Sevilla;
+1024;Distribuciones Fuentezuela Demo, S.L.;B00009886;administracion@fuentezuelademo24.example;+34 640 000 024;50001;Zaragoza;2026-07-25
+1025;Talleres Olmedilla Inventada SA;A00010256;administracion@olmedillainventada25.example;650000025;48001;Bilbao;2026-08-26
+1026;Gráficas Quirelo, S.L.U.;ESB00010629;administracion@quirelo26.example;660-00-00-26;29001;Málaga;2026-09-27
+1027;Bodegas Nubarrón SCoop;B00010991;administracion@nubarron27.example;0034670000027;30001;Murcia;
+1028;Climatización Pradoluz, S.L.;es B.00.011.361;administracion@pradoluz28.example;+34 680 000 028;47001;Valladolid;2026-02-02
+1029;Consultoría Montañeta SA;a00011734;;690000029;15001;A Coruña;2026-03-03

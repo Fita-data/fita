@@ -5,7 +5,8 @@
 //! rest of the documented names so it can say they are not supported yet.
 
 use fita_core::Strategy;
-use serde_yaml::Value;
+
+use crate::raw::RawEntry;
 
 /// Rule functions documented in ARCHITECTURE.md.
 const KNOWN_FUNCTIONS: [&str; 14] = [
@@ -52,31 +53,31 @@ pub(crate) enum ParsedStrategy {
 /// In a flow list such as `[source(crm, billing), most_recent]` YAML sees
 /// three entries: `source(crm`, `billing)` and `most_recent`. This puts back
 /// together every run of entries whose parentheses only balance when joined.
-pub(crate) fn rejoin_split_calls(entries: Vec<Value>) -> Vec<Value> {
+pub(crate) fn rejoin_split_calls(entries: Vec<RawEntry>) -> Vec<RawEntry> {
     let mut joined = Vec::with_capacity(entries.len());
     let mut pending: Option<String> = None;
     for entry in entries {
         match (pending.take(), entry) {
-            (Some(mut open), Value::String(text)) => {
+            (Some(mut open), RawEntry::Text(text)) => {
                 open.push_str(", ");
                 open.push_str(text.trim());
                 if paren_balance(&open) > 0 {
                     pending = Some(open);
                 } else {
-                    joined.push(Value::String(open));
+                    joined.push(RawEntry::Text(open));
                 }
             }
             (Some(open), other) => {
-                joined.push(Value::String(open));
+                joined.push(RawEntry::Text(open));
                 joined.push(other);
             }
-            (None, Value::String(text)) if paren_balance(&text) > 0 => {
+            (None, RawEntry::Text(text)) if paren_balance(&text) > 0 => {
                 pending = Some(text.trim().to_string());
             }
             (None, other) => joined.push(other),
         }
     }
-    joined.extend(pending.map(Value::String));
+    joined.extend(pending.map(RawEntry::Text));
     joined
 }
 
@@ -103,11 +104,13 @@ pub(crate) fn is_valid_name(name: &str) -> bool {
 }
 
 /// Parses one entry of a `when` list.
-pub(crate) fn parse_condition(entry: &Value) -> Condition {
+pub(crate) fn parse_condition(entry: &RawEntry) -> Condition {
     match entry {
-        Value::String(text) => parse_condition_text(text),
-        Value::Mapping(map) if map.contains_key("any") => Condition::Unsupported("any".into()),
-        _ => Condition::Invalid("a condition must be a text such as equal(tax_id)".into()),
+        RawEntry::Text(text) => parse_condition_text(text),
+        RawEntry::Any { .. } => Condition::Unsupported("any".into()),
+        RawEntry::Other(_) => {
+            Condition::Invalid("a condition must be a text such as equal(tax_id)".into())
+        }
     }
 }
 
@@ -171,8 +174,8 @@ fn split_call(text: &str) -> Option<(&str, &str)> {
 mod tests {
     use super::*;
 
-    fn text(value: &str) -> Value {
-        Value::String(value.to_string())
+    fn text(value: &str) -> RawEntry {
+        RawEntry::Text(value.to_string())
     }
 
     #[test]
@@ -197,7 +200,7 @@ mod tests {
             parse_condition(&text("different(tax_id)")),
             Condition::Unsupported("different".into())
         );
-        let any: Value = serde_yaml::from_str("any: [equal(a), equal(b)]").unwrap();
+        let any: RawEntry = serde_saphyr::from_str("any: [equal(a), equal(b)]").unwrap();
         assert_eq!(parse_condition(&any), Condition::Unsupported("any".into()));
     }
 
@@ -215,10 +218,8 @@ mod tests {
                 "{bad}"
             );
         }
-        assert!(matches!(
-            parse_condition(&Value::Number(3.into())),
-            Condition::Invalid(_)
-        ));
+        let number: RawEntry = serde_saphyr::from_str("3").unwrap();
+        assert!(matches!(parse_condition(&number), Condition::Invalid(_)));
     }
 
     #[test]
@@ -251,8 +252,8 @@ mod tests {
 
     #[test]
     fn rejoins_calls_split_by_yaml() {
-        let list: Vec<Value> =
-            serde_yaml::from_str("[source(crm, billing, erp), most_recent, in_list(code, a, b)]")
+        let list: Vec<RawEntry> =
+            serde_saphyr::from_str("[source(crm, billing, erp), most_recent, in_list(code, a, b)]")
                 .unwrap();
         assert_eq!(list.len(), 7);
         assert_eq!(
@@ -269,7 +270,7 @@ mod tests {
     fn rejoin_leaves_balanced_and_unclosed_entries_alone() {
         let list = vec![text("equal(tax_id)"), text("source(crm")];
         assert_eq!(rejoin_split_calls(list.clone()), list);
-        let any: Value = serde_yaml::from_str("any: [equal(a)]").unwrap();
+        let any: RawEntry = serde_saphyr::from_str("any: [equal(a)]").unwrap();
         let list = vec![text("source(crm"), any.clone()];
         assert_eq!(rejoin_split_calls(list), vec![text("source(crm"), any]);
     }

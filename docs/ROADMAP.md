@@ -7,11 +7,11 @@ Work is grouped in three versions. Each item is a unit that fits in one pull req
 Goal: run end to end on real sized data for one domain and reach at least 92% precision on the benchmark.
 
 ### Foundations
-- [ ] Cargo workspace with `fita-core`, `fita-config`, `fita-connect`, `fita-normalize`, `fita-match`, `fita-survive`, `fita-store`, `fita-engine`, `fita-cli`
+- [x] Cargo workspace with `fita-core`, `fita-config`, `fita-connect`, `fita-normalize`, `fita-match`, `fita-survive`, `fita-store`, `fita-engine`, `fita-cli`
 - [ ] CI with fmt, clippy, tests and cargo-deny
 - [ ] ADRs 0001 to 0005
 - [ ] PostgreSQL schema and sqlx migrations, temporal tables with exclusion constraints
-- [ ] In-memory store implementing the storage traits, for tests
+- [x] In-memory store implementing the storage traits, for tests
 - [ ] Job queue with `SKIP LOCKED`, heartbeats and idempotent retries
 - [ ] Process roles `api`, `worker` and `scheduler`
 
@@ -38,7 +38,7 @@ Goal: run end to end on real sized data for one domain and reach at least 92% pr
 - [ ] Golden and property tests for every normalizer
 
 ### Matching and survivorship
-- [ ] Exact match and plain union-find (first end to end path)
+- [x] Exact match and plain union-find (first end to end path)
 - [ ] Blocking with size limit, warnings and split
 - [ ] Similarity functions and comparison levels per type
 - [ ] Ordered deterministic rules with `never_merge`

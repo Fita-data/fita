@@ -11,7 +11,7 @@ use serde::de::DeserializeOwned;
 use crate::model::{
     Attribute, Connector, Domain, MatchRule, Project, RuleSet, Source, DEFAULT_CSV_SEPARATOR,
 };
-use crate::raw::{RawDomain, RawRule, RawRules, RawSettings, RawSource};
+use crate::raw::{RawDomain, RawEntry, RawRule, RawRules, RawSettings, RawSource};
 use crate::rules::{
     is_valid_name, parse_condition, parse_strategy, rejoin_split_calls, Condition, ParsedStrategy,
 };
@@ -79,10 +79,11 @@ impl Loader<'_> {
                 return None;
             }
         };
-        match serde_yaml::from_str(&text) {
+        match serde_saphyr::from_str(&text) {
             Ok(value) => Some(value),
             Err(error) => {
-                self.error(path, format!("invalid YAML: {error}"));
+                // Keep each issue on one line: no source snippet.
+                self.error(path, format!("invalid YAML: {}", error.without_snippet()));
                 None
             }
         }
@@ -460,7 +461,7 @@ impl Loader<'_> {
         path: &Path,
         domain: &Domain,
         sources: &[Source],
-        raw: BTreeMap<String, Vec<serde_yaml::Value>>,
+        raw: BTreeMap<String, Vec<RawEntry>>,
     ) -> BTreeMap<String, Vec<Strategy>> {
         let mut result = BTreeMap::new();
         for (attribute, entries) in raw {
@@ -476,7 +477,7 @@ impl Loader<'_> {
             }
             let mut strategies = Vec::new();
             for entry in rejoin_split_calls(entries) {
-                let serde_yaml::Value::String(entry) = entry else {
+                let RawEntry::Text(entry) = entry else {
                     self.error(path, format!("survivorship of {attribute:?}: a strategy must be a text such as most_recent"));
                     continue;
                 };

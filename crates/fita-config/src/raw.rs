@@ -2,8 +2,8 @@
 
 use std::collections::BTreeMap;
 
+use serde::de::IgnoredAny;
 use serde::Deserialize;
-use serde_yaml::Value;
 
 /// `fita.yaml`.
 #[derive(Debug, Deserialize)]
@@ -11,9 +11,9 @@ use serde_yaml::Value;
 pub(crate) struct RawSettings {
     pub name: String,
     /// Documented but not supported yet.
-    pub packs: Option<Value>,
+    pub packs: Option<IgnoredAny>,
     /// Documented but not supported yet.
-    pub working_store: Option<Value>,
+    pub working_store: Option<IgnoredAny>,
 }
 
 /// `domains/*.yaml`.
@@ -46,7 +46,7 @@ pub(crate) struct RawSource {
     pub modified_at: Option<String>,
     pub mapping: BTreeMap<String, String>,
     /// Documented but not supported yet.
-    pub schedule: Option<Value>,
+    pub schedule: Option<IgnoredAny>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -67,18 +67,33 @@ pub(crate) struct RawRules {
     #[serde(default)]
     pub rules: Vec<RawRule>,
     #[serde(default)]
-    pub survivorship: BTreeMap<String, Vec<Value>>,
+    pub survivorship: BTreeMap<String, Vec<RawEntry>>,
     /// Documented but not supported yet.
-    pub blocking: Option<Value>,
+    pub blocking: Option<IgnoredAny>,
     /// Documented but not supported yet.
-    pub model: Option<Value>,
+    pub model: Option<IgnoredAny>,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub(crate) struct RawRule {
     pub name: String,
-    pub when: Vec<Value>,
+    pub when: Vec<RawEntry>,
     pub confidence: Option<f64>,
     pub action: Option<String>,
+}
+
+/// One entry of a `when` list or of a survivorship list.
+#[derive(Debug, Clone, PartialEq, Deserialize)]
+#[serde(untagged)]
+pub(crate) enum RawEntry {
+    /// A text such as `equal(tax_id)` or `most_recent`.
+    Text(String),
+    /// An `any: [...]` block. Not supported yet, so its content is not kept.
+    Any {
+        #[allow(dead_code)]
+        any: IgnoredAny,
+    },
+    /// Anything else, which is always an error.
+    Other(IgnoredAny),
 }

@@ -396,3 +396,9 @@ fn ignores_files_that_are_not_yaml() {
     let project = load_ok(&files);
     assert_eq!(project.sources.len(), 2);
 }
+
+#[test]
+fn rejects_repeated_keys() {
+    let errors = load_errors(&with("fita.yaml", "name: demo\nname: other\n"));
+    assert_has(&errors, "fita.yaml: invalid YAML");
+}

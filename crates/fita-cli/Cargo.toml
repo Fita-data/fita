@@ -1,0 +1,26 @@
+[package]
+name = "fita-cli"
+description = "The fita command line tool"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "fita"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+clap.workspace = true
+csv.workspace = true
+fita-config.workspace = true
+fita-core.workspace = true
+fita-engine.workspace = true
+fita-store.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
