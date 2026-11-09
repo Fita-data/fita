@@ -45,6 +45,8 @@ Later versions add `fita-relations` (hierarchies), `fita-refdata` (reference dat
 
 If a change needs a domain crate to import a database or HTTP type, the design is wrong. Add a trait to `fita-core` instead.
 
+These rules are tested by `crates/fita-architecture`, which reads the workspace with `cargo metadata` and fails `cargo test` when a crate breaks them. A new crate must be added to a layer in that test and in this list.
+
 ## Process roles
 
 `fita serve` starts every role in one process. Large installs start the same binary several times with `--role api`, `--role worker` or `--role scheduler`. All coordination goes through PostgreSQL. There is no external queue.
